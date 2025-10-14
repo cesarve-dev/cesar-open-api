@@ -1,3 +1,102 @@
-h1 {
-    color: #0c74a9;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* mobile first */
+
+/*********** 
+TYPOGRAPHY
+************/
+
+body {
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #000;
+}
+
+h1, header p {
+    color: #fff;
+}
+
+header a {
+    text-decoration: none;
+    color: #ceba7a;
+}
+
+/* *******
+LAYOUT
+**********/
+
+header {
+    text-align: center;
+    padding: 5rem 0;
+}
+
+/* Team section information */
+
+#team-info {
+    background: linear-gradient(#db221d, #952132);
+    color: #fff;
+    padding: 4rem 1rem;
+}
+
+#team-info h2, #team-stadium h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #ceba7a;
+}
+
+#team-info > *:nth-child(4) {
+    margin-bottom: 1rem;
+}
+
+#team-info img {
+    display: block;
+    width: 50%;
+    margin: 2rem auto;
+    margin-bottom: 0;
+}
+
+/* Stadium section */
+
+#team-stadium {
+    padding: 4rem 1rem;
+}
+
+#team-stadium > *:nth-child(5) {
+    margin-bottom: 1rem;
+}
+
+#team-stadium img {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Player Section */
+
+#team-players {
+    width: 100%;
+    height: 50vh;
+    padding: 4rem 1rem;
+    background-image: url('assets/fondo_inicio.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.player-card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.player-card {
+    width: 90%;
+    border: 1px solid #ceba7a;
+    padding: .5rem;
+    margin: .5rem auto;
 }
