@@ -21,22 +21,29 @@ getRepositories();
 //Soccer API
 
 //This returns Peru National Team information
-// fetch("https://v3.football.api-sports.io/teams?id=30", {
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-host": "v3.football.api-sports.io",
-// 		"x-rapidapi-key": "ee2671c057388eed73c0832729ea0572"
-// 	}
-// })
-// .then(response => {
-// 	returnresponse.json();
-// })
-// .then(data => {
-//     console.log(data);
-// })
-// .catch(err => {
-// 	console.log(err);
-// });
+async function getPeruviaTeamInfo() {
+    try {
+        const response = await fetch("https://v3.football.api-sports.io/teams?id=30", {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "v3.football.api-sports.io",
+                "x-rapidapi-key": "ee2671c057388eed73c0832729ea0572"
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+
+        const data = await response.json();
+        console.log(data.response[0].team.name); //Peru
+
+    } catch (error) {
+        console.log('new error:', error);
+    }
+}
+
+getPeruviaTeamInfo();
 
 //This returns a list of players from The Peruvian National Team
 // fetch("https://v3.football.api-sports.io/players/squads?team=30", {
