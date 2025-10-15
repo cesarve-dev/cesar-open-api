@@ -55,40 +55,51 @@ async function getPeruvianTeamInfo() {
         const stadiumImage = data.response[0].venue.image;
         
         //content for #team-info section
-        const newH2 = document.createElement('h2');
+        const teamContentContainer = document.createElement('div')
+        const teamImageContainer = document.createElement('div')
+        const titleH2 = document.createElement('h2');
         const newPcountry = document.createElement('p');
         const newPcity = document.createElement('p');
         const newPfounded = document.createElement('p');
         const imageLogo = document.createElement('img');
-        newH2.innerHTML = `National soccer team of: ${title}`;
+        titleH2.innerHTML = `National soccer team of: ${title}`;
         newPcity.innerHTML = `Located in the city of: ${stadiumCity}`;
         newPcountry.innerHTML = `and country of: ${country}`;
         newPfounded.innerHTML = `The Peru National Soccer Team was founded on: ${founded}`;
         imageLogo.src = `${logo}`;
 
-        teamInfo.appendChild(newH2);
-        teamInfo.appendChild(newPcity);
-        teamInfo.appendChild(newPcountry);
-        teamInfo.appendChild(newPfounded);
-        teamInfo.appendChild(imageLogo);
+        teamContentContainer.appendChild(titleH2);
+        teamContentContainer.appendChild(newPcity);
+        teamContentContainer.appendChild(newPcountry);
+        teamContentContainer.appendChild(newPfounded);
+        teamImageContainer.appendChild(imageLogo);
+        teamInfo.appendChild(teamContentContainer);
+        teamInfo.appendChild(teamImageContainer);
 
         //content for #team-stadium section
+        const stadiumContentContainer = document.createElement('div');
+        const stadiumImageContainer = document.createElement('div');
+        const stadiumTitle = document.createElement('h2');
         const stadiumPname = document.createElement('p');
         const stadiumPaddress = document.createElement('p');
         const stadiumPcapacity = document.createElement('p');
         const stadiumPsurface = document.createElement('p');
         const stadiumImg = document.createElement('img');
+        stadiumTitle.innerHTML = "STADIUM";
         stadiumPname.innerHTML = `Name: ${stadiumName}`;
         stadiumPaddress.innerHTML = `Address: ${stadiumAddress}, ${stadiumCity}`;
         stadiumPcapacity.innerHTML = `The stadium has a capacity for ${stadiumCapacity} seats`;
         stadiumPsurface.innerHTML = `Type of surface: ${stadiumSurface}`;
         stadiumImg.src = `${stadiumImage}`;
 
-        teamStadium.appendChild(stadiumPname);
-        teamStadium.appendChild(stadiumPaddress);
-        teamStadium.appendChild(stadiumPcapacity);
-        teamStadium.appendChild(stadiumPsurface);
-        teamStadium.appendChild(stadiumImg);
+        stadiumContentContainer.appendChild(stadiumTitle);
+        stadiumContentContainer.appendChild(stadiumPname);
+        stadiumContentContainer.appendChild(stadiumPaddress);
+        stadiumContentContainer.appendChild(stadiumPcapacity);
+        stadiumContentContainer.appendChild(stadiumPsurface);
+        stadiumImageContainer.appendChild(stadiumImg);
+        teamStadium.appendChild(stadiumContentContainer);
+        teamStadium.appendChild(stadiumImageContainer);
 
     } catch (error) {
         console.log('new error:', error);
