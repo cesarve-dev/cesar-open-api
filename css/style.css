@@ -1,3 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* mobile first */
+
+/*********** 
+TYPOGRAPHY
+************/
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f0f0f0;
+}
+
+nav {
+    font-weight: 700;
+    background-color: #ceba7a;
+    padding: 1rem 0;
+    
+}
+
+nav a {
+    text-decoration: none;
+    padding: 1rem 1rem;
+    color:#000;
+}
+
+header {
+    background-color: #000;
+}
+
 h1 {
-    color: #0c74a9;
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+h1, header p {
+    color: #fff;
+}
+
+header a {
+    text-decoration: none;
+    color: #ceba7a;
+}
+
+#team-info h2, #team-stadium h2, #team-players h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ceba7a;
+}
+
+p, a {
+    font-size: 1.1rem;
+}
+
+/* *******
+LAYOUT
+**********/
+
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+header {
+    text-align: center;
+    padding: 5rem 0;
+}
+
+/* Team section information */
+
+#team-info {
+    background: linear-gradient(#db221d, #952132);
+    color: #fff;
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#team-info > *:nth-child(4) {
+    margin-bottom: 1rem;
+}
+
+#team-info img {
+    display: block;
+    width: 50%;
+    margin: 2rem auto;
+    margin-bottom: 0;
+}
+
+/* Stadium section */
+
+#team-stadium {
+    padding: 4rem 1rem;
+    display: none;
+    flex-direction: column;
+}
+
+#team-stadium > *:nth-child(5) {
+    margin-bottom: 1rem;
+}
+
+#team-stadium img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Player Section */
+
+#team-players {
+    display: none;
+    color: #fff;
+    padding: 4rem 1rem;
+    background-color: #000;
+}
+
+.player-card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.player-card {
+    width: 85%;
+    background-image: url('/assets/fondo_inicio.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border: 5px solid #ceba7a;
+    padding: 3rem;
+    margin: 1rem auto;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: rgba(149, 157, 165, 0.35) 0px 8px 24px;
+}
+
+.player-card img {
+    display: block;
+    width: 75%;
+    margin: auto auto;
+    border-radius: 10px;
+
+}
+
+.player-card h3 {
+    margin: 1rem 0;
+    font-weight: 800;
+}
+
+/*********** 
+   TABLET
+************/
+
+@media (min-width: 768px) {
+
+    nav a {
+        font-size: 1.2rem;
+    }
+
+    #team-info h2, #team-stadium h2 {
+        text-align: left;
+    }
+
+    #team-info, #team-stadium {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #team-stadium {
+        align-items: flex-start;
+    }
+
+    #team-info div, #team-stadium div {
+        padding: 0 1rem;
+    }
+
+    #team-info img {
+        width: auto;
+    }
+
+    .player-card-container {
+        justify-content: space-between;
+    }
+    .player-card {
+        width: 30%;
+    }
+}
+
+/*********** 
+   Desktop
+************/
+
+@media (min-width: 1024px) {
+
+    nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 1rem;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        margin: auto .5rem;
+    }
+
+    nav a:hover {
+        background-color: #000;
+        color: #fff;
+    }
+
+    header h1, header p, main section div {
+        max-width: 1280px;
+        /* margin: 0 auto; */
+    }
+
+    #team-info, #team-stadium, #team-players {
+        padding: 6rem 2rem;
+    }
+
+    #team-info, #team-stadium {
+        justify-content: space-between;
+    }
+
+    #team-stadium {
+        align-items: flex-start;
+    }
+
+    .player-card-container {
+        /* justify-content: center; */
+        margin: 2rem auto;
+    }
+
+    .player-card {
+        width: 15%;
+        padding: 1.5rem;
+        margin: 2rem 1rem;
+    }
 }
