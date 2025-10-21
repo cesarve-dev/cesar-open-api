@@ -26,6 +26,7 @@ const API_HOST = "v3.football.api-sports.io"
 //sections
 const teamInfo = document.getElementById('team-info');
 const teamStadium = document.getElementById('team-stadium');
+const teamPlayers = document.getElementById('team-players');
 const playerCardContainer= document.querySelector('.player-card-container');
 
 //This returns Peru National Team information
@@ -175,3 +176,17 @@ async function getPlayersInfo () {
 
 getPlayersInfo();
 getPeruvianTeamInfo();
+
+const stadiumButton = document.querySelector('#stadiumBtn');
+const teamButton = document.querySelector('#teamBtn');
+
+stadiumButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    teamStadium.style.display = 'flex';
+    
+})
+
+teamButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    teamPlayers.style.display = 'block';
+})
