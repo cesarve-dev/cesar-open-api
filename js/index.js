@@ -182,11 +182,19 @@ const teamButton = document.querySelector('#teamBtn');
 
 stadiumButton.addEventListener('click', (event) => {
     event.preventDefault();
+    if (window.getComputedStyle(teamPlayers).display === 'block') {
+        teamPlayers.style.display = 'none';
+    }
+
     teamStadium.style.display = 'flex';
-    
 })
 
 teamButton.addEventListener('click', (event) => {
     event.preventDefault();
+
+    if (window.getComputedStyle(teamStadium).display === 'flex') {
+        teamStadium.style.display = 'none';
+    }
+
     teamPlayers.style.display = 'block';
 })
