@@ -20,6 +20,9 @@ getRepositories();
 
 //Soccer API
 
+const API_KEY = "ee2671c057388eed73c0832729ea0572";
+const API_HOST = "v3.football.api-sports.io"
+
 //sections
 const teamInfo = document.getElementById('team-info');
 const teamStadium = document.getElementById('team-stadium');
@@ -31,8 +34,8 @@ async function getPeruvianTeamInfo() {
         const response = await fetch("https://v3.football.api-sports.io/teams?id=30", {
             "method": "GET",
             "headers": {
-                "x-rapidapi-host": "v3.football.api-sports.io",
-                "x-rapidapi-key": "ee2671c057388eed73c0832729ea0572"
+                "x-rapidapi-host": API_HOST,
+                "x-rapidapi-key": API_KEY
             }
         });
 
@@ -57,52 +60,58 @@ async function getPeruvianTeamInfo() {
         //content for #team-info section
         const teamContentContainer = document.createElement('div')
         const teamImageContainer = document.createElement('div')
-        const titleH2 = document.createElement('h2');
-        const newPcountry = document.createElement('p');
-        const newPcity = document.createElement('p');
-        const newPfounded = document.createElement('p');
+        const teamTitle = document.createElement('h2');
+        const countryParagraph = document.createElement('p');
+        const cityParagraph = document.createElement('p');
+        const foundedParagraph = document.createElement('p');
         const imageLogo = document.createElement('img');
-        titleH2.innerHTML = `National soccer team of: ${title}`;
-        newPcity.innerHTML = `Located in the city of: ${stadiumCity}`;
-        newPcountry.innerHTML = `and country of: ${country}`;
-        newPfounded.innerHTML = `The Peru National Soccer Team was founded on: ${founded}`;
+        teamTitle.innerHTML = `National soccer team of: ${title}`;
+        cityParagraph.innerHTML = `Located in the city of: ${stadiumCity}`;
+        countryParagraph.innerHTML = `and country of: ${country}`;
+        foundedParagraph.innerHTML = `The Peru National Soccer Team was founded on: ${founded}`;
         imageLogo.src = `${logo}`;
 
-        teamContentContainer.appendChild(titleH2);
-        teamContentContainer.appendChild(newPcity);
-        teamContentContainer.appendChild(newPcountry);
-        teamContentContainer.appendChild(newPfounded);
+        teamContentContainer.append(
+            teamTitle,
+            cityParagraph,
+            countryParagraph,
+            foundedParagraph
+        );
+
         teamImageContainer.appendChild(imageLogo);
-        teamInfo.appendChild(teamContentContainer);
-        teamInfo.appendChild(teamImageContainer);
+
+        teamInfo.append(teamContentContainer, teamImageContainer);
 
         //content for #team-stadium section
         const stadiumContentContainer = document.createElement('div');
         const stadiumImageContainer = document.createElement('div');
         const stadiumTitle = document.createElement('h2');
-        const stadiumPname = document.createElement('p');
-        const stadiumPaddress = document.createElement('p');
-        const stadiumPcapacity = document.createElement('p');
-        const stadiumPsurface = document.createElement('p');
+        const stadiumNameParagraph = document.createElement('p');
+        const stadiumAddressParagraph = document.createElement('p');
+        const stadiumCapacityParagraph = document.createElement('p');
+        const stadiumSurfaceParagraph = document.createElement('p');
         const stadiumImg = document.createElement('img');
         stadiumTitle.innerHTML = "STADIUM";
-        stadiumPname.innerHTML = `Name: ${stadiumName}`;
-        stadiumPaddress.innerHTML = `Address: ${stadiumAddress}, ${stadiumCity}`;
-        stadiumPcapacity.innerHTML = `The stadium has a capacity for ${stadiumCapacity} seats`;
-        stadiumPsurface.innerHTML = `Type of surface: ${stadiumSurface}`;
+        stadiumNameParagraph.innerHTML = `Name: ${stadiumName}`;
+        stadiumAddressParagraph.innerHTML = `Address: ${stadiumAddress}, ${stadiumCity}`;
+        stadiumCapacityParagraph.innerHTML = `The stadium has a capacity for ${stadiumCapacity} seats`;
+        stadiumSurfaceParagraph.innerHTML = `Type of surface: ${stadiumSurface}`;
         stadiumImg.src = `${stadiumImage}`;
 
-        stadiumContentContainer.appendChild(stadiumTitle);
-        stadiumContentContainer.appendChild(stadiumPname);
-        stadiumContentContainer.appendChild(stadiumPaddress);
-        stadiumContentContainer.appendChild(stadiumPcapacity);
-        stadiumContentContainer.appendChild(stadiumPsurface);
+        stadiumContentContainer.append(
+            stadiumTitle,
+            stadiumNameParagraph,
+            stadiumAddressParagraph,
+            stadiumCapacityParagraph,
+            stadiumSurfaceParagraph
+        );
+
         stadiumImageContainer.appendChild(stadiumImg);
-        teamStadium.appendChild(stadiumContentContainer);
-        teamStadium.appendChild(stadiumImageContainer);
+
+        teamStadium.append(stadiumContentContainer, stadiumImageContainer);
 
     } catch (error) {
-        console.log('new error:', error);
+        console.error('new error:', error);
     }
 }
 
@@ -112,8 +121,8 @@ async function getPlayersInfo () {
         const response = await fetch("https://v3.football.api-sports.io/players/squads?team=30", {
             "method": "GET",
             "headers": {
-                "x-rapidapi-host": "v3.football.api-sports.io",
-                "x-rapidapi-key": "ee2671c057388eed73c0832729ea0572"
+                "x-rapidapi-host": API_HOST,
+                "x-rapidapi-key": API_KEY
             }
         });
 
@@ -148,17 +157,19 @@ async function getPlayersInfo () {
             playerPosition.innerHTML = `Position: ${dataPlayerPosition}`;
             playerPhoto.src = `${dataPlayerPhoto}`;
 
-            playerCard.append(playerPhoto);
-            playerCard.append(playerName);
-            playerCard.append(playerAge);
-            playerCard.append(playerNumber);
-            playerCard.append(playerPosition);
+            playerCard.append(
+                playerPhoto,
+                playerName,
+                playerAge,
+                playerNumber,
+                playerPosition
+            );
 
             playerCardContainer.append(playerCard);
         }
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
