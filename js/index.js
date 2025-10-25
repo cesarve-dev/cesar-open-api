@@ -32,6 +32,9 @@ const playerCardContainer= document.querySelector('.player-card-container');
 //This returns Peru National Team information
 async function getPeruvianTeamInfo() {
     try {
+        teamInfo.innerHTML = "";
+        teamStadium.innerHTML = "";
+
         const response = await fetch("https://v3.football.api-sports.io/teams?id=30", {
             "method": "GET",
             "headers": {
@@ -119,6 +122,7 @@ async function getPeruvianTeamInfo() {
 //This returns a list of players from The Peruvian National Team
 async function getPlayersInfo () {
     try {
+        playerCardContainer.innerHTML = "";
         const response = await fetch("https://v3.football.api-sports.io/players/squads?team=30", {
             "method": "GET",
             "headers": {
@@ -174,27 +178,21 @@ async function getPlayersInfo () {
     }
 }
 
-getPlayersInfo();
-getPeruvianTeamInfo();
-
 const stadiumButton = document.querySelector('#stadiumBtn');
 const teamButton = document.querySelector('#teamBtn');
 
-stadiumButton.addEventListener('click', (event) => {
+stadiumButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    if (window.getComputedStyle(teamPlayers).display === 'block') {
-        teamPlayers.style.display = 'none';
-    }
-
+    teamPlayers.style.display = "none";
     teamStadium.style.display = 'flex';
+    await getPeruvianTeamInfo(); // already called, why call it again?
 })
 
-teamButton.addEventListener('click', (event) => {
+teamButton.addEventListener('click', async (event) => {
     event.preventDefault();
-
-    if (window.getComputedStyle(teamStadium).display === 'flex') {
-        teamStadium.style.display = 'none';
-    }
-
+    teamStadium.style.display = 'none';
     teamPlayers.style.display = 'block';
+    await getPlayersInfo();
 })
+
+getPeruvianTeamInfo();
