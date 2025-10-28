@@ -185,7 +185,6 @@ stadiumButton.addEventListener('click', async (event) => {
     event.preventDefault();
     teamPlayers.style.display = "none";
     teamStadium.style.display = 'flex';
-    await getPeruvianTeamInfo(); // already called, why call it again?
 })
 
 teamButton.addEventListener('click', async (event) => {
